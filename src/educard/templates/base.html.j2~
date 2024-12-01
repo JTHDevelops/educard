@@ -1,0 +1,76 @@
+{% block doctype %}
+<!DOCTYPE html>
+{% endblock doctype %}
+
+<html lang="en">
+<head>
+{% block base_head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%- block base_head_title %}Document{% endblock base_head_title -%}</title>
+
+    {% block base_bootstrapping %}
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+    <link rel="styleshhet" href="/static/css/bscss/bootstrap.min.css" />
+    <script src="/static/js/bsjs/bootstrap.bundle.min.js"></script>
+    {% endblock base_bootstrapping %}
+
+    <!-- BEGIN STYLESHEETS -->
+    {% block base_styles %}
+    <style>
+    body {
+        text-align: center;
+        vertical-align: middle;
+        margin:none;
+        padding:none;
+    }
+    bsx-container {
+        display:block;
+        width:10in;
+        height:8.5in;
+        border: 3px solid blue;
+    }
+    bsx-wrapper {
+        margin:none;
+        padding:auto;
+    }
+    
+    </style>
+    {% endblock base_styles %}
+    <!--  -->
+    {% block head_styles %}
+        <!-- Replace this block with your stylsheet embeds and tags -->
+    {% endblock head_styles %}
+    <!-- ENDOF STYLESHEETS -->
+
+
+
+    <!-- BEGIN SCRIPTS  -->
+    {% block base_scripts %}
+    <script>
+    $(document).ready(()=>{
+        $("bsx-wrapper").addClass('container-fluid')
+        $("bsx-container").addClass('container')
+    })
+    </script>
+    {% endblock base_scripts %}
+    <!--                -->
+    {% block head_scripts %}
+    
+    {% endblock head_scripts %}
+    <!-- ENDOF SCRIPTS  -->
+
+{% endblock base_head %}<!-- Insert your own scripts here. -->
+</head>
+<body>
+{% block base_body %}
+    <bsx-wrapper>
+    <bsx-container>
+    {% block base_contents %}
+    Contents loading...
+    {% endblock base_contents %}
+    </bsx-container>
+    </bsx-wrapper>
+{% endblock base_body %}
+</body>
+</html>

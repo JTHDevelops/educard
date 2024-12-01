@@ -1,0 +1,38 @@
+from gptk import Property
+from flask import Flask, render_template
+import webview
+import webview.window
+
+
+server = Flask(
+    __name__, 
+    static_folder='./static', 
+    template_folder='./templates'
+    )
+
+@server.route('/')
+def index():
+    return render_template("index.html")
+
+class API:
+    
+    @Property("The window for which this api object is created.")
+    def window(self):
+        pass
+    
+    def destroy(self):
+        self.window.destroy()
+
+    def log(self, value):
+        print(value)
+      
+
+
+def custom_logic(window):
+    window.toggle_fullscreen() 
+    window.evaluate_js('alert("Nice one!");')
+
+api=API()
+window = webview.create_window('Flask example', server, js_api=api, confirm_close=True)
+api.window = window
+webview.start()

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="" />
+
+    {% for script in scripts %}
+        <script type="{{ script.type }}" src="{{ script.src }}">
+        </script>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
